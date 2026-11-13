@@ -1,0 +1,6 @@
+- [x] Build the responsive Alaiya Technologies homepage from the supplied brief.
+- [x] Add project filtering, conceptual previews, client project carousel, and inquiry validation.
+- [x] Verify the live preview, interactions, and current build status.
+- [x] Check the layout on phone and tablet widths.
+- [x] Connect the inquiry form so submissions are stored and visible to the owner.
+- [ ] Replace concept previews with the four supplied real project screenshots and fit them cleanly in consistent image frames.
