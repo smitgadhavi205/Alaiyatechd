@@ -372,7 +372,7 @@ function HomePage() {
               At Alaiya Technologies, we believe every business deserves technology that works for them. We combine thoughtful design, practical development, and a deep understanding of business needs to create solutions that are useful, intuitive, and built for growth.
             </p>
             <div className="expertise-list">
-              {["Modern web development", "Business software", "UI/UX design", "Workflow automation"].map((item) => (
+              {["Modern web development", "Business software", "UI/UX design", "Workflow automation", "UDYAM / MSME Certified"].map((item) => (
                 <span key={item}><Check aria-hidden="true" />{item}</span>
               ))}
             </div>
@@ -458,13 +458,17 @@ function HomePage() {
               <span className="brand-name">ALAIYA <span>TECHNOLOGIES</span></span>
             </a>
             <p>Building digital solutions<br />for tomorrow.</p>
+            <div className="footer-cert" style={{ display: "inline-flex", alignItems: "center", gap: "6px", padding: "6px 12px", borderRadius: "9999px", background: "rgba(16, 185, 129, 0.1)", border: "1px solid rgba(16, 185, 129, 0.3)", fontSize: "10px", color: "#34d399", fontWeight: 600, letterSpacing: "0.06em", marginTop: "10px", width: "fit-content" }}>
+              <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#10b981", display: "inline-block" }}></span>
+              <span>UDYAM / MSME CERTIFIED ENTERPRISE</span>
+            </div>
             <div className="footer-links"><span>EXPLORE</span>{navigation.map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}</div>
             <div className="footer-links"><span>OUR SERVICES</span>{services.map((service) => <a key={service.number} href="#services">{service.detail}</a>)}</div>
             <a className="footer-contact" href="mailto:smit44787@gmail.com">Have a project in mind? <span>smit44787@gmail.com <ArrowUpRight aria-hidden="true" /></span></a>
           </div>
           <div className="footer-bottom">
             <span>© {new Date().getFullYear()} ALAIYA TECHNOLOGIES</span>
-            <span>MSME & UDYAM CERTIFIED</span>
+            <span style={{ color: "#34d399", fontWeight: 700, letterSpacing: "0.08em" }}>✓ UDYAM / MSME CERTIFIED</span>
             <span>MADE WITH INTENTION.</span>
             <a href="#home">BACK TO TOP ↑</a>
           </div>
