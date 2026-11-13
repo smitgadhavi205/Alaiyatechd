@@ -462,7 +462,12 @@ function HomePage() {
             <div className="footer-links"><span>OUR SERVICES</span>{services.map((service) => <a key={service.number} href="#services">{service.detail}</a>)}</div>
             <a className="footer-contact" href="mailto:smit44787@gmail.com">Have a project in mind? <span>smit44787@gmail.com <ArrowUpRight aria-hidden="true" /></span></a>
           </div>
-          <div className="footer-bottom"><span>© {new Date().getFullYear()} ALAIYA TECHNOLOGIES</span><span>MADE WITH INTENTION.</span><a href="#home">BACK TO TOP ↑</a></div>
+          <div className="footer-bottom">
+            <span>© {new Date().getFullYear()} ALAIYA TECHNOLOGIES</span>
+            <span>MSME & UDYAM CERTIFIED</span>
+            <span>MADE WITH INTENTION.</span>
+            <a href="#home">BACK TO TOP ↑</a>
+          </div>
         </div>
       </footer>
 
