@@ -52,6 +52,7 @@ const navigation = [
   { label: "Our work", href: "#work" },
   { label: "Reviews", href: "#reviews" },
   { label: "About", href: "#about" },
+  { label: "FAQs", href: "#faq" },
 ];
 
 const services = [
@@ -170,6 +171,19 @@ const process = [
 ];
 
 const filters = ["All projects", "Websites", "Software"] as const;
+const solutions = [
+  { icon: Monitor, title: "Turn browsing into an inquiry.", audience: "FOR SHOPS & SERVICE BUSINESSES", text: "Give customers a clear place to explore your products, understand your services, and get in touch.", tags: ["Product catalogs", "Service pages", "Inquiry flows"] },
+  { icon: Workflow, title: "Bring the daily details together.", audience: "FOR TEAMS & GROWING OPERATIONS", text: "Replace scattered spreadsheets with connected customer records, bookings, and workflows built around your team.", tags: ["Customer management", "Appointments", "Business dashboards"] },
+  { icon: Layers3, title: "Make your next idea tangible.", audience: "FOR FOUNDERS & PRODUCT TEAMS", text: "Start with the essential user journey, shape a focused first release, and build a foundation you can develop further.", tags: ["Product discovery", "Interactive design", "Web applications"] },
+];
+
+const faqs = [
+  { question: "What should I have ready before we talk?", answer: "A short description of your business, the problem you want to solve, and any websites or tools you like is a useful starting point. If you already have a logo, content, or an existing system, tell us about those too. You do not need a finished technical brief." },
+  { question: "How are the scope and cost decided?", answer: "The scope depends on the pages, features, integrations, and content your project needs. We start by discussing those requirements so the proposed work, priorities, and costs can be agreed before development begins." },
+  { question: "Can you improve an existing website or workflow?", answer: "Yes. Share what you currently use and where it falls short. We can review the experience and discuss whether targeted improvements or a new build would better address your goals." },
+  { question: "How long will my project take?", answer: "Timing depends on the size of the project, the readiness of your content, and the complexity of the features. We discuss milestones after discovery, including time for your feedback and testing before launch." },
+  { question: "What happens after launch?", answer: "We can discuss ongoing support, fixes, and future improvements as part of the project scope. Share your maintenance needs early so responsibilities and the level of support are clear before handover." },
+];
 type ProjectFilter = (typeof filters)[number];
 
 function HomePage() {
@@ -297,6 +311,15 @@ function HomePage() {
         </div>
       </section>
 
+      <div className="studio-band">
+        <div className="page-width studio-band-inner">
+          <span className="studio-band-label">BUILT AROUND YOUR BUSINESS</span>
+          <span><Check aria-hidden="true" /> Thoughtful design</span>
+          <span><Check aria-hidden="true" /> Practical development</span>
+          <span><Check aria-hidden="true" /> Room to grow</span>
+        </div>
+      </div>
+
       <section className="services-section section-padding reveal-on-scroll" id="services">
         <div className="page-width">
           <div className="section-heading services-heading">
@@ -317,6 +340,27 @@ function HomePage() {
                   <span className="service-detail">{service.detail}<ArrowUpRight aria-hidden="true" /></span>
                 </article>
               );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="solutions-section section-padding reveal-on-scroll" id="solutions">
+        <div className="page-width">
+          <div className="section-heading">
+            <div><p className="eyebrow">A BETTER EVERYDAY</p><h2>Start with a challenge.<br /><span>Build toward a possibility.</span></h2></div>
+            <p className="heading-aside">A beautiful interface is only the beginning. The real value is in what it helps your customers and your team do next.</p>
+          </div>
+          <div className="solutions-grid">
+            {solutions.map((solution) => {
+              const Icon = solution.icon;
+              return <article className="solution-card" key={solution.title}>
+                <div className="solution-icon"><Icon aria-hidden="true" /></div>
+                <p className="solution-audience">{solution.audience}</p>
+                <h3>{solution.title}</h3><p>{solution.text}</p>
+                <ul>{solution.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
+                <a href="#contact">Talk through your idea <ArrowUpRight aria-hidden="true" /></a>
+              </article>;
             })}
           </div>
         </div>
@@ -422,6 +466,27 @@ function HomePage() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="delivery-section reveal-on-scroll">
+        <div className="page-width delivery-layout">
+          <div><p className="eyebrow eyebrow-light">THE DETAILS MATTER</p><h2>A considered build.<br /><span>From first click to handover.</span></h2><a href="#contact">Let’s define your project <ArrowUpRight aria-hidden="true" /></a></div>
+          <div className="delivery-grid">
+            {[
+              ["01", "Designed for real screens", "Layouts that adapt across mobile, tablet, and desktop, with clear navigation and readable content."],
+              ["02", "Built around your priorities", "A focused scope that connects design decisions and product features to your business goals."],
+              ["03", "Reviewed together", "Milestones for feedback, practical testing, and refinement before your product goes live."],
+              ["04", "Ready for the next step", "A clear handover and a conversation about the support and improvements you may need next."],
+            ].map(([number, title, text]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{text}</p></article>)}
+          </div>
+        </div>
+      </section>
+
+      <section className="faq-section section-padding reveal-on-scroll" id="faq">
+        <div className="page-width faq-layout">
+          <div><p className="eyebrow">BEFORE WE BEGIN</p><h2>Good questions.<br /><span>Clear answers.</span></h2><p className="heading-aside">Every project starts with a conversation. Here are a few things you might be wondering about.</p><a className="faq-contact" href="#contact">Have a different question? <ArrowUpRight aria-hidden="true" /></a></div>
+          <div className="faq-list">{faqs.map((faq, index) => <details key={faq.question}><summary><span className="faq-number">{String(index + 1).padStart(2, "0")}</span><span>{faq.question}</span><span className="faq-toggle" aria-hidden="true">+</span></summary><p>{faq.answer}</p></details>)}</div>
         </div>
       </section>
 
