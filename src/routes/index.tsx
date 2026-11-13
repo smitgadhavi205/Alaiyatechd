@@ -189,6 +189,24 @@ function HomePage() {
     return () => window.removeEventListener("keydown", handleEscape);
   }, [selectedProject]);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-revealed");
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: "0px 0px -30px 0px" }
+    );
+
+    const elements = document.querySelectorAll(".reveal-on-scroll");
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   const filteredProjects = projects.filter((project) => {
     if (filter === "All projects") return true;
     if (filter === "Websites") return project.category === "Website";
@@ -279,7 +297,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="services-section section-padding" id="services">
+      <section className="services-section section-padding reveal-on-scroll" id="services">
         <div className="page-width">
           <div className="section-heading services-heading">
             <div>
@@ -304,7 +322,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="work-section section-padding" id="work">
+      <section className="work-section section-padding reveal-on-scroll" id="work">
         <div className="page-width">
           <div className="section-heading work-heading">
             <div>
@@ -338,7 +356,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="reviews-section section-padding" id="reviews">
+      <section className="reviews-section section-padding reveal-on-scroll" id="reviews">
         <div className="page-width">
           <div className="section-heading reviews-heading">
             <div>
@@ -363,7 +381,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="about-section section-padding" id="about">
+      <section className="about-section section-padding reveal-on-scroll" id="about">
         <div className="page-width about-layout">
           <div className="about-copy">
             <p className="eyebrow"><span>04</span> A LITTLE ABOUT US</p>
@@ -386,7 +404,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="process-section section-padding" id="process">
+      <section className="process-section section-padding reveal-on-scroll" id="process">
         <div className="page-width">
           <div className="section-heading process-heading">
             <div>
@@ -407,18 +425,28 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="contact-section" id="contact">
+      <section className="contact-section reveal-on-scroll" id="contact">
         <div className="page-width contact-layout">
           <div className="contact-copy">
             <p className="eyebrow eyebrow-light"><span>06</span> YOUR NEXT CHAPTER</p>
             <h2>Have an idea?<br /><span>Let’s build something great.</span></h2>
             <p>Whether you need a business website, a custom CRM, or a completely new software product, we’re ready to hear what you have in mind.</p>
-            <p className="mt-3 text-sm text-neutral-300">
-              Or reach out directly at{" "}
-              <a href="mailto:smit44787@gmail.com" className="font-medium text-white underline underline-offset-4 hover:opacity-80">
-                smit44787@gmail.com
-              </a>
-            </p>
+            
+            <div className="contact-channels" style={{ marginTop: "20px", display: "flex", flexDirection: "column", gap: "10px", padding: "16px", borderRadius: "6px", background: "rgba(255, 255, 255, 0.05)", border: "1px solid rgba(255, 255, 255, 0.1)", fontSize: "12px" }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px", flexWrap: "wrap" }}>
+                <span style={{ color: "rgba(255, 255, 255, 0.65)" }}>Customer Support:</span>
+                <a href="mailto:support@gadhavi.me" style={{ color: "#34d399", fontWeight: 600, textDecoration: "underline", textUnderlineOffset: "4px" }}>
+                  support@gadhavi.me
+                </a>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px", flexWrap: "wrap" }}>
+                <span style={{ color: "rgba(255, 255, 255, 0.65)" }}>Direct Inquiries:</span>
+                <a href="mailto:smit44787@gmail.com" style={{ color: "#ffffff", fontWeight: 600, textDecoration: "underline", textUnderlineOffset: "4px" }}>
+                  smit44787@gmail.com
+                </a>
+              </div>
+            </div>
+
             <div className="contact-signoff"><span className="status-dot" /> GOOD THINGS START WITH A CONVERSATION</div>
           </div>
           <form className="inquiry-form" onSubmit={handleInquiry} onChange={() => setFormMessage("")}>
@@ -462,9 +490,20 @@ function HomePage() {
               <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#10b981", display: "inline-block" }}></span>
               <span>UDYAM / MSME CERTIFIED ENTERPRISE</span>
             </div>
-            <div className="footer-links"><span>EXPLORE</span>{navigation.map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}</div>
+            <div className="footer-links">
+              <span>EXPLORE</span>
+              {navigation.map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}
+              <a href="mailto:support@gadhavi.me">Help & Support</a>
+            </div>
             <div className="footer-links"><span>OUR SERVICES</span>{services.map((service) => <a key={service.number} href="#services">{service.detail}</a>)}</div>
-            <a className="footer-contact" href="mailto:smit44787@gmail.com">Have a project in mind? <span>smit44787@gmail.com <ArrowUpRight aria-hidden="true" /></span></a>
+            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+              <a className="footer-contact" href="mailto:support@gadhavi.me">
+                Customer Support <span>support@gadhavi.me <ArrowUpRight aria-hidden="true" /></span>
+              </a>
+              <a className="footer-contact" style={{ fontSize: "9px", opacity: 0.85 }} href="mailto:smit44787@gmail.com">
+                Direct: <span style={{ fontSize: "13px" }}>smit44787@gmail.com <ArrowUpRight aria-hidden="true" /></span>
+              </a>
+            </div>
           </div>
           <div className="footer-bottom">
             <span>© {new Date().getFullYear()} ALAIYA TECHNOLOGIES</span>

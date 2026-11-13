@@ -374,6 +374,281 @@
 .dialog-copy > button { margin-top: 10px; border-radius: 3px; }
 @keyframes review-in { from { opacity: 0.65; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
+/* Global Smooth Scrolling & Entrance Animations */
+html {
+  scroll-behavior: smooth;
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero Staggered Entrance Animations */
+.hero-copy > .eyebrow {
+  animation: hero-fade-in-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.hero-copy > h1 {
+  animation: hero-fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
+}
+
+.hero-copy > p {
+  animation: hero-fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.38s both;
+}
+
+.hero-actions {
+  animation: hero-fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.52s both;
+}
+
+.hero-art-caption, .hero-scroll {
+  animation: hero-fade-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both;
+}
+
+.hero-artwork {
+  animation: hero-artwork-zoom 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes hero-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes hero-artwork-zoom {
+  from {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Pulsing Status Dot */
+@keyframes status-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--mint) 65%, transparent);
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 7px color-mix(in oklab, var(--mint) 0%, transparent);
+  }
+}
+
+.status-dot {
+  animation: status-pulse 2.2s infinite ease-in-out;
+}
+
+/* Brand Logo Bar Wave Animation on Hover */
+.brand:hover .brand-symbol span:nth-child(1) {
+  animation: bar-wave 0.5s ease;
+}
+.brand:hover .brand-symbol span:nth-child(2) {
+  animation: bar-wave 0.5s ease 0.1s;
+}
+.brand:hover .brand-symbol span:nth-child(3) {
+  animation: bar-wave 0.5s ease 0.2s;
+}
+
+@keyframes bar-wave {
+  0%, 100% { transform: skew(-20deg) scaleY(1); }
+  50% { transform: skew(-20deg) scaleY(1.4); }
+}
+
+/* Service Card Lift & Micro-interactions */
+.service-item {
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), background 0.32s ease, box-shadow 0.32s ease;
+}
+
+.service-item:hover {
+  transform: translateY(-6px);
+  background: color-mix(in oklab, var(--accent) 30%, transparent);
+  box-shadow: 0 16px 36px oklch(0.1 0.015 255 / 8%);
+  z-index: 2;
+}
+
+.service-item:hover .service-topline svg {
+  transform: rotate(14deg) scale(1.18);
+  transition: transform 0.3s ease;
+}
+
+.service-item .service-topline svg {
+  transition: transform 0.3s ease;
+}
+
+.service-item:hover .service-detail svg {
+  transform: translate(4px, -4px);
+  transition: transform 0.25s ease;
+}
+
+.service-detail svg {
+  transition: transform 0.25s ease;
+}
+
+/* Project Cards Hover & Zoom */
+.project-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+}
+
+.project-preview {
+  transition: box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.project-card:hover .project-preview {
+  border-color: var(--electric);
+  box-shadow: 0 20px 42px oklch(0.1 0.015 255 / 14%);
+}
+
+.project-preview-image {
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card:hover .project-preview-image {
+  transform: scale(1.04);
+}
+
+.project-info > button {
+  transition: transform 0.28s ease, background 0.28s ease, color 0.28s ease, border-color 0.28s ease;
+}
+
+.project-card:hover .project-info > button {
+  transform: rotate(45deg);
+  background: var(--electric);
+  color: #fff;
+  border-color: var(--electric);
+}
+
+/* Review Item Interactive Lift */
+.review-item {
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.32s ease, border-color 0.32s ease;
+}
+
+.review-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 32px oklch(0.1 0.015 255 / 9%);
+  border-top-color: var(--electric);
+}
+
+.review-item:hover .review-monogram {
+  transform: scale(1.12);
+  transition: transform 0.25s ease;
+}
+
+.review-monogram {
+  transition: transform 0.25s ease;
+}
+
+/* Process Step Animations */
+.process-step {
+  transition: transform 0.3s ease;
+}
+
+.process-step:hover {
+  transform: translateY(-4px);
+}
+
+.process-step:hover .process-node {
+  background: var(--electric);
+  box-shadow: 0 0 0 5px color-mix(in oklab, var(--electric) 28%, transparent);
+  transition: all 0.25s ease;
+}
+
+.process-node {
+  transition: all 0.25s ease;
+}
+
+/* Buttons & CTA Micro-interactions */
+.button-electric, .button-quiet, .nav-cta, .nav-mobile-cta {
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), background 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.button-electric:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px color-mix(in oklab, var(--electric) 42%, transparent);
+}
+
+.button-electric:active, .button-quiet:active, .nav-cta:active {
+  transform: scale(0.97);
+}
+
+.button-quiet:hover {
+  transform: translateY(-2px);
+}
+
+.nav-cta:hover, .nav-mobile-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px color-mix(in oklab, var(--mint) 42%, transparent);
+}
+
+/* About Visual Floating Stamp */
+.visual-stamp {
+  animation: float-stamp 3.8s ease-in-out infinite;
+}
+
+@keyframes float-stamp {
+  0%, 100% {
+    transform: rotate(-6deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-4deg) translateY(-8px);
+  }
+}
+
+/* Input Focus Glow */
+.form-fields input, .form-fields select, .form-fields textarea {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.form-fields input:focus, .form-fields select:focus, .form-fields textarea:focus {
+  outline: none;
+  border-color: var(--electric);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--electric) 20%, transparent);
+}
+
+/* Footer Certification Badge Pulse */
+.footer-cert {
+  transition: all 0.3s ease;
+  animation: cert-pulse 3s infinite ease-in-out;
+}
+
+@keyframes cert-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.35);
+  }
+}
+
+.footer-cert:hover {
+  transform: translateY(-2px);
+  background: rgba(16, 185, 129, 0.18) !important;
+}
+
 @media (min-width: 1500px) {
   .hero-artwork { width: min(100%, 1300px); }
 }
