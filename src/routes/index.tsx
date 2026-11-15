@@ -3,14 +3,35 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import {
   ArrowDownRight,
+  ArrowLeft,
   ArrowRight,
   ArrowUpRight,
+  Box,
   Braces,
+  Briefcase,
+  Camera,
   Check,
+  CheckCircle2,
+  FileSpreadsheet,
+  FileText,
+  Headphones,
+  Home,
+  Info,
+  Layers,
   Layers3,
+  LayoutGrid,
+  Leaf,
+  Mail,
   Menu,
+  MessageSquareCode,
   Monitor,
   MousePointer2,
+  Settings,
+  ShieldCheck,
+  Smartphone,
+  Sparkles,
+  Star,
+  Users,
   Workflow,
   X,
 } from "lucide-react";
@@ -18,9 +39,10 @@ import { Button } from "@/components/ui/button";
 import { submitInquiry } from "@/lib/contact.functions";
 import workArtwork from "@/assets/alaiya-digital-work.jpg";
 import harshilReviewImage from "@/assets/harshil-salon-crm.png";
-import furnitureReviewImage from "@/assets/best-furniture.png";
+import khusbuReviewImage from "@/assets/khusbu-cosmetics.jpg";
 import saiReviewImage from "@/assets/sai-computers.png";
 import alaiyaHubReviewImage from "@/assets/alaiyahub.png";
+import udyamBadgeImage from "@/assets/udyam-badge-2x.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -49,10 +71,28 @@ export const Route = createFileRoute("/")({
 
 const navigation = [
   { label: "Services", href: "#services" },
+  { label: "Products", href: "/products" },
   { label: "Our work", href: "#work" },
   { label: "Reviews", href: "#reviews" },
   { label: "About", href: "#about" },
   { label: "FAQs", href: "#faq" },
+];
+
+const footerExplore = [
+  { label: "Services", href: "#services", icon: Home },
+  { label: "Products", href: "/products", icon: Box },
+  { label: "Our Work", href: "#work", icon: Layers },
+  { label: "Reviews", href: "#reviews", icon: Users },
+  { label: "About", href: "#about", icon: Info },
+  { label: "FAQs", href: "#faq", icon: FileText },
+  { label: "Help & Support", href: "mailto:smit44787@gmail.com", icon: Headphones },
+];
+
+const footerServices = [
+  { label: "AlaiyaHub & Custom CRM", href: "/products", icon: LayoutGrid },
+  { label: "Industry Portals (Salon, CA, Photo)", href: "/products", icon: Sparkles },
+  { label: "Alaiya Auth & Security", href: "/products", icon: ShieldCheck },
+  { label: "WhatsApp CRM & Automation", href: "/products", icon: MessageSquareCode },
 ];
 
 const services = [
@@ -101,13 +141,13 @@ const projects = [
     image: harshilReviewImage,
   },
   {
-    id: "best-furniture",
-    name: "Best Furniture",
-    product: "Furniture showcase website",
+    id: "khusbu-cosmetics",
+    name: "Khusbu Cosmetics",
+    product: "Cosmetics & skincare e-commerce website",
     category: "Website",
     description:
-      "A product-led furniture experience designed to bring collections together and help customers discover the right pieces.",
-    image: furnitureReviewImage,
+      "A modern, high-conversion e-commerce storefront for science-backed skincare collections, featuring rich product storytelling, ingredient highlights, and seamless checkout.",
+    image: khusbuReviewImage,
   },
   {
     id: "sai-computers",
@@ -131,35 +171,39 @@ const projects = [
 
 const reviews = [
   {
-    id: "harshil-salon",
-    name: "Harshil Salon",
-    product: "Salon CRM Software",
-    image: harshilReviewImage,
-    quote:
-      "The CRM software has made managing our salon much easier. We can keep track of customers, appointments, and daily activities in one place. Alaiya Technologies understood what our business needed and built a solution that is simple and practical to use.",
-  },
-  {
     id: "best-furniture",
     name: "Best Furniture",
-    product: "Furniture Showcase Website",
-    image: furnitureReviewImage,
+    product: "Furniture Showcase & Catalog",
     quote:
-      "We wanted a website that could showcase our furniture collections in a clean and attractive way. Alaiya Technologies delivered a modern design that presents our products beautifully and makes it easy for customers to explore what we offer.",
+      "We wanted a clean way to showcase our furniture collections online. The platform Alaiya Technologies delivered presents our pieces beautifully, loads fast, and makes it easy for customers to explore what we offer.",
+  },
+  {
+    id: "khusbu-cosmetics",
+    name: "Khusbu Cosmetics",
+    product: "Cosmetics & Skincare E-Commerce Platform",
+    quote:
+      "Our online customer engagement and direct orders surged after launching our new skincare storefront. Alaiya Technologies delivered a sleek, fast, and visually stunning digital shopping experience that showcases our formulas perfectly.",
   },
   {
     id: "sai-computers",
     name: "Sai Computers Bardoli",
-    product: "Technology Business Website",
-    image: saiReviewImage,
+    product: "Technology Business Website & Inventory",
     quote:
-      "We needed a professional website to showcase our computer products and services. Alaiya Technologies created a clean, user-friendly website that represents our business well and makes it easier for customers to learn about our offerings.",
+      "We needed a professional digital presence to showcase our computer products and services. Alaiya Technologies created a clean, user-friendly platform that represents our business well and makes customer discovery effortless.",
   },
   {
-    id: "alaiyahub",
-    name: "AlaiyaHub",
-    product: "CRM Software",
-    image: alaiyaHubReviewImage,
-    quote: "Good work by Alaiya Technologies.",
+    id: "harshil-salon",
+    name: "Harshil Salon",
+    product: "AlaiyaHub Salon CRM Platform",
+    quote:
+      "The CRM software has made managing our salon much easier. We can keep track of customers, appointments, and daily activities in one place. Alaiya Technologies understood what our business needed and built a solution that is simple and practical to use.",
+  },
+  {
+    id: "sunils-studio",
+    name: "Sunil's Studio",
+    product: "Alaiya Photographer Suite",
+    quote:
+      "Delivering proof galleries to wedding clients used to take hours of manual uploads and watermarking. With Alaiya Photographer, clients pick their favorites directly online, and downloads are instant.",
   },
 ];
 
@@ -170,7 +214,7 @@ const process = [
   { number: "04", title: "Launch & support", text: "Get your product out there and help it keep growing." },
 ];
 
-const filters = ["All projects", "Websites", "Software"] as const;
+const filters = ["All projects", "Products", "Websites", "Software"] as const;
 const solutions = [
   { icon: Monitor, title: "Turn browsing into an inquiry.", audience: "FOR SHOPS & SERVICE BUSINESSES", text: "Give customers a clear place to explore your products, understand your services, and get in touch.", tags: ["Product catalogs", "Service pages", "Inquiry flows"] },
   { icon: Workflow, title: "Bring the daily details together.", audience: "FOR TEAMS & GROWING OPERATIONS", text: "Replace scattered spreadsheets with connected customer records, bookings, and workflows built around your team.", tags: ["Customer management", "Appointments", "Business dashboards"] },
@@ -192,7 +236,28 @@ function HomePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [formMessage, setFormMessage] = useState("");
   const [isSending, setIsSending] = useState(false);
+  const [reviewIndex, setReviewIndex] = useState(0);
+  const [isMobileReviews, setIsMobileReviews] = useState(false);
   const sendInquiry = useServerFn(submitInquiry);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileReviews(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const maxReviewIndex = isMobileReviews ? reviews.length - 1 : Math.max(0, reviews.length - 2);
+
+  const handlePrevReview = () => {
+    setReviewIndex((prev) => (prev <= 0 ? maxReviewIndex : prev - 1));
+  };
+
+  const handleNextReview = () => {
+    setReviewIndex((prev) => (prev >= maxReviewIndex ? 0 : prev + 1));
+  };
 
   useEffect(() => {
     if (!selectedProject) return;
@@ -223,6 +288,7 @@ function HomePage() {
 
   const filteredProjects = projects.filter((project) => {
     if (filter === "All projects") return true;
+    if (filter === "Products") return project.category === "Software" || project.id === "alaiyahub" || project.id === "salon-crm";
     if (filter === "Websites") return project.category === "Website";
     return project.category === filter;
   });
@@ -407,20 +473,75 @@ function HomePage() {
               <p className="eyebrow"><span>03</span> CLIENT RELATIONSHIPS</p>
               <h2>Built with trust. <span>Backed by relationships.</span></h2>
             </div>
+            <div className="carousel-controls">
+              <span className="carousel-counter">
+                {String(reviewIndex + 1).padStart(2, "0")} / {String(maxReviewIndex + 1).padStart(2, "0")}
+              </span>
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={handlePrevReview}
+                aria-label="Previous review"
+                className="carousel-btn"
+              >
+                <ArrowLeft className="w-4 h-4" />
+              </Button>
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={handleNextReview}
+                aria-label="Next review"
+                className="carousel-btn"
+              >
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </div>
           </div>
-          <div className="review-grid" aria-live="polite">
-            {reviews.map((review, index) => (
-              <article className="review-item" key={review.id}>
-                <img className="review-image" src={review.image} alt={`${review.name} project screenshot`} loading="lazy" />
-                <div className="review-monogram">{review.name.slice(0, 1)}</div>
-                <span className="review-project-number">CLIENT REVIEW&nbsp; / &nbsp;{String(index + 1).padStart(2, "0")}</span>
-                <h3>{review.name}</h3>
-                <p className="review-product">{review.product}</p>
-                <p className="review-quote">“{review.quote}”</p>
-                <span className="review-divider" />
-                <span className="review-kind">ALAIYA TECHNOLOGIES</span>
-              </article>
-            ))}
+
+          <div className="review-carousel-container" aria-live="polite">
+            <div
+              className="review-carousel-track"
+              style={{
+                transform: `translateX(-${reviewIndex * (isMobileReviews ? 100 : 50)}%)`,
+              }}
+            >
+              {reviews.map((review, index) => (
+                <div className="review-slide" key={review.id}>
+                  <article className="review-item no-image-review">
+                    <div className="review-card-header">
+                      <div className="review-monogram">{review.name.slice(0, 1)}</div>
+                      <div className="review-stars" aria-label="5 out of 5 stars">
+                        <Star className="star-icon" fill="currentColor" stroke="none" />
+                        <Star className="star-icon" fill="currentColor" stroke="none" />
+                        <Star className="star-icon" fill="currentColor" stroke="none" />
+                        <Star className="star-icon" fill="currentColor" stroke="none" />
+                        <Star className="star-icon" fill="currentColor" stroke="none" />
+                      </div>
+                    </div>
+                    <span className="review-project-number">
+                      CLIENT REVIEW&nbsp; / &nbsp;{String(index + 1).padStart(2, "0")}
+                    </span>
+                    <h3>{review.name}</h3>
+                    <span className="review-product-badge">{review.product}</span>
+                    <p className="review-quote">“{review.quote}”</p>
+                    <span className="review-divider" />
+                    <div className="review-kind">
+                      <span>ALAIYA TECHNOLOGIES</span>
+                      <span className="review-verified-badge">VERIFIED CLIENT</span>
+                    </div>
+                  </article>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="carousel-progress" aria-hidden="true">
+            <span
+              style={{
+                width: `${100 / (maxReviewIndex + 1)}%`,
+                transform: `translateX(${reviewIndex * 100}%)`,
+              }}
+            />
           </div>
         </div>
       </section>
@@ -499,14 +620,8 @@ function HomePage() {
             
             <div className="contact-channels" style={{ marginTop: "20px", display: "flex", flexDirection: "column", gap: "10px", padding: "16px", borderRadius: "6px", background: "rgba(255, 255, 255, 0.05)", border: "1px solid rgba(255, 255, 255, 0.1)", fontSize: "12px" }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px", flexWrap: "wrap" }}>
-                <span style={{ color: "rgba(255, 255, 255, 0.65)" }}>Customer Support:</span>
-                <a href="mailto:support@gadhavi.me" style={{ color: "#34d399", fontWeight: 600, textDecoration: "underline", textUnderlineOffset: "4px" }}>
-                  support@gadhavi.me
-                </a>
-              </div>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px", flexWrap: "wrap" }}>
-                <span style={{ color: "rgba(255, 255, 255, 0.65)" }}>Direct Inquiries:</span>
-                <a href="mailto:smit44787@gmail.com" style={{ color: "#ffffff", fontWeight: 600, textDecoration: "underline", textUnderlineOffset: "4px" }}>
+                <span style={{ color: "rgba(255, 255, 255, 0.65)" }}>Email Inquiries:</span>
+                <a href="mailto:smit44787@gmail.com" style={{ color: "#34d399", fontWeight: 600, textDecoration: "underline", textUnderlineOffset: "4px" }}>
                   smit44787@gmail.com
                 </a>
               </div>
@@ -544,37 +659,111 @@ function HomePage() {
       </section>
 
       <footer className="site-footer">
-        <div className="page-width">
-          <div className="footer-main">
-            <a className="brand footer-brand" href="#home" aria-label="Alaiya Technologies home">
-              <span className="brand-symbol" aria-hidden="true"><span /><span /><span /></span>
-              <span className="brand-name">ALAIYA <span>TECHNOLOGIES</span></span>
-            </a>
-            <p>Building digital solutions<br />for tomorrow.</p>
-            <div className="footer-cert" style={{ display: "inline-flex", alignItems: "center", gap: "6px", padding: "6px 12px", borderRadius: "9999px", background: "rgba(16, 185, 129, 0.1)", border: "1px solid rgba(16, 185, 129, 0.3)", fontSize: "10px", color: "#34d399", fontWeight: 600, letterSpacing: "0.06em", marginTop: "10px", width: "fit-content" }}>
-              <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#10b981", display: "inline-block" }}></span>
-              <span>UDYAM / MSME CERTIFIED ENTERPRISE</span>
+        <div className="page-width footer-container">
+          <div className="footer-main-grid">
+            {/* Left Column: Brand & Tagline + Contact Pills */}
+            <div className="footer-left-col">
+              <div className="footer-brand-lockup">
+                <a className="brand footer-brand" href="#home" aria-label="Alaiya Technologies home">
+                  <span className="brand-symbol" aria-hidden="true"><span /><span /><span /></span>
+                  <span className="brand-name">ALAIYA <span>TECHNOLOGIES</span></span>
+                </a>
+                <div className="footer-tagline-block">
+                  <span>Building digital solutions</span>
+                  <span>for <strong className="glow-emerald">tomorrow.</strong></span>
+                </div>
+              </div>
+
+              <div className="footer-contact-pills">
+                <div className="contact-pill-item">
+                  <span className="contact-pill-label">Customer Support</span>
+                  <a className="contact-pill-box" href="mailto:smit44787@gmail.com">
+                    <Mail className="pill-icon" aria-hidden="true" />
+                    <span className="pill-text">smit44787@gmail.com</span>
+                    <ArrowUpRight className="pill-arrow" aria-hidden="true" />
+                  </a>
+                </div>
+              </div>
             </div>
-            <div className="footer-links">
-              <span>EXPLORE</span>
-              {navigation.map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}
-              <a href="mailto:support@gadhavi.me">Help & Support</a>
+
+            {/* Center Column: UDYAM / MSME Micro Enterprise Medallion */}
+            <div className="footer-center-col">
+              <div className="udyam-seal-wrapper">
+                <img
+                  src={udyamBadgeImage}
+                  alt="UDYAM MSME Micro Enterprise"
+                  className="udyam-seal-img"
+                  width="180"
+                  height="180"
+                  loading="lazy"
+                />
+              </div>
             </div>
-            <div className="footer-links"><span>OUR SERVICES</span>{services.map((service) => <a key={service.number} href="#services">{service.detail}</a>)}</div>
-            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-              <a className="footer-contact" href="mailto:support@gadhavi.me">
-                Customer Support <span>support@gadhavi.me <ArrowUpRight aria-hidden="true" /></span>
-              </a>
-              <a className="footer-contact" style={{ fontSize: "9px", opacity: 0.85 }} href="mailto:smit44787@gmail.com">
-                Direct: <span style={{ fontSize: "13px" }}>smit44787@gmail.com <ArrowUpRight aria-hidden="true" /></span>
-              </a>
+
+            {/* Right Column: Explore + Our Services */}
+            <div className="footer-right-col">
+              <div className="footer-nav-column">
+                <span className="footer-column-heading">EXPLORE</span>
+                <nav className="footer-nav-menu" aria-label="Explore navigation">
+                  {footerExplore.map((item) => {
+                    const Icon = item.icon;
+                    return (
+                      <a key={item.label} href={item.href} className="footer-menu-link">
+                        <Icon className="menu-icon" aria-hidden="true" />
+                        <span>{item.label}</span>
+                      </a>
+                    );
+                  })}
+                </nav>
+              </div>
+
+              <div className="footer-vertical-rule" aria-hidden="true" />
+
+              <div className="footer-nav-column">
+                <span className="footer-column-heading">OUR SERVICES</span>
+                <nav className="footer-nav-menu" aria-label="Services navigation">
+                  {footerServices.map((item) => {
+                    const Icon = item.icon;
+                    return (
+                      <a key={item.label} href={item.href} className="footer-menu-link">
+                        <Icon className="menu-icon" aria-hidden="true" />
+                        <span>{item.label}</span>
+                      </a>
+                    );
+                  })}
+                </nav>
+              </div>
             </div>
           </div>
-          <div className="footer-bottom">
-            <span>© {new Date().getFullYear()} ALAIYA TECHNOLOGIES</span>
-            <span style={{ color: "#34d399", fontWeight: 700, letterSpacing: "0.08em" }}>✓ UDYAM / MSME CERTIFIED</span>
-            <span>MADE WITH INTENTION.</span>
-            <a href="#home">BACK TO TOP ↑</a>
+
+          {/* Bottom Bar: 4 sections with vertical dividers */}
+          <div className="footer-bottom-bar">
+            <div className="bottom-bar-segment">
+              <span>© {new Date().getFullYear()} ALAIYA TECHNOLOGIES</span>
+            </div>
+
+            <div className="bottom-bar-sep" aria-hidden="true" />
+
+            <div className="bottom-bar-segment cert-segment">
+              <span className="cert-badge-icon" aria-hidden="true"><Check className="cert-check-svg" strokeWidth={3} /></span>
+              <span className="cert-text">UDYAM / MSME MICRO ENTERPRISE</span>
+            </div>
+
+            <div className="bottom-bar-sep" aria-hidden="true" />
+
+            <div className="bottom-bar-segment purpose-segment">
+              <Leaf className="purpose-leaf-icon" aria-hidden="true" />
+              <span>MADE WITH PURPOSE.</span>
+            </div>
+
+            <div className="bottom-bar-sep" aria-hidden="true" />
+
+            <div className="bottom-bar-segment backtop-segment">
+              <a href="#home" className="back-to-top-btn">
+                <span>BACK TO TOP</span>
+                <span className="arrow-sym">↑</span>
+              </a>
+            </div>
           </div>
         </div>
       </footer>

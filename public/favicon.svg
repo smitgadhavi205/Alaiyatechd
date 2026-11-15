@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <style>
+    :root {
+      --brand-mint: #40CD9B;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --brand-mint: #059669;
+      }
+    }
+    .brand-bar {
+      fill: var(--brand-mint);
+    }
+  </style>
+  <path class="brand-bar" d="M 22.52 32.71 L 16.70 48.71 A 5.00 5.00 0 0 1 7.30 45.29 L 13.13 29.29 A 5.00 5.00 0 0 1 22.52 32.71 Z" />
+  <path class="brand-bar" d="M 43.62 18.71 L 32.70 48.71 A 5.00 5.00 0 0 1 23.30 45.29 L 34.22 15.29 A 5.00 5.00 0 0 1 43.62 18.71 Z" />
+  <path class="brand-bar" d="M 56.71 26.71 L 48.70 48.71 A 5.00 5.00 0 0 1 39.30 45.29 L 47.31 23.29 A 5.00 5.00 0 0 1 56.71 26.71 Z" />
+</svg>
